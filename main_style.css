@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f4f4f4;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: orange;
+}
+
+/* df-messenger {
+    --df-messenger-bot-message: #df9b56;
+    --df-messenger-button-titlebar-color: #df9b56;
+    --df-messenger-chat-background-color: #fafafa;
+    --df-messenger-font-color: white;
+    --df-messenger-send-icon: #df9b56;
+    --df-messenger-user-message: #479b3d;
+} */
+
+.navbar {
+    background-color: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-links .login-btn {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.navbar .nav-links .login-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #bbb;
+}
+
+.navbar .nav-links .register-btn {
+    background-color: #FF3333;
+    color: white;
+    border: 1px solid #FF3333;
+}
+
+.navbar .nav-links .register-btn:hover {
+    background-color: #ff6565;
+    border-color: #ff6565;
+}

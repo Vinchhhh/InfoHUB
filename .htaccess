@@ -1,0 +1,21 @@
+# --- Apache Server Configuration for InfoHUB ---
+
+# Turn off directory browsing for security.
+# This prevents visitors from seeing a list of all your files if they
+# navigate to a folder that doesn't have an index file.
+Options -Indexes
+
+# Set the default file to load when a directory is requested.
+# The server will look for index.php first.
+DirectoryIndex index.php
+
+# Protect sensitive files from being accessed directly from a browser.
+# This is a crucial security step.
+<Files "connect.php">
+    Require all denied
+</Files>
+
+# Protect the entire /db directory, which contains your SQL dump.
+# This rule requires the mod_rewrite module on your server (it's almost always enabled).
+RewriteEngine On
+RewriteRule ^db/ - [F,L]
