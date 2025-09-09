@@ -1,8 +1,23 @@
 <?php
+ob_start();
+$customSessionPath = __DIR__ . DIRECTORY_SEPARATOR . 'sessions';
+if (!is_dir($customSessionPath)) { @mkdir($customSessionPath, 0777, true); }
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
+session_save_path($customSessionPath);
 session_start();
 include "connect.php";
+require_once 'csrf.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!validate_csrf()) {
+        echo "<script>alert('Invalid security token. Please try again.'); window.location.href = 'index.php';</script>";
+        exit();
+    }
     // First, check if the reCAPTCHA response is present
     if (!isset($_POST['g-recaptcha-response']) || empty($_POST['g-recaptcha-response'])) {
         echo "<script>alert('Please complete the reCAPTCHA verification.'); window.location.href = 'index.php';</script>";
@@ -31,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
 
         if (password_verify($_POST['password'], $user['password'])) {
+            session_regenerate_id(true);
             // Set session variables for use across the site
             $_SESSION['user_id'] = $user['userid'];
             $_SESSION['user_username'] = $user['username'];
@@ -44,12 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $log_stmt->execute();
             $log_stmt->close();
 
-            // ** CONDITIONAL REDIRECT **
-            if ($user['access'] === 'admin') {
-                header("Location: admin_panel.php"); // Redirect admin users
-            } else {
-                header("Location: main.php"); // Redirect regular users
-            }
+            header("Location: main.php");
             exit();
         }
     }

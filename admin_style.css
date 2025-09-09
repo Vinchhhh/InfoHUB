@@ -5,6 +5,21 @@ body {
     color: #333;
     margin: 0;
     padding: 20px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* WebKit browsers (Chrome, Safari, Edge) */
+}
+
+html {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar {
+    display: none; /* WebKit browsers (Chrome, Safari, Edge) */
 }
 
 .container {
@@ -192,4 +207,458 @@ td.actions {
 
 .action-box input[type="file"] {
     margin-bottom: 15px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Large Desktop (1200px+) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+        padding: 30px 40px;
+    }
+    
+    .backup-restore-actions {
+        gap: 40px;
+    }
+    
+    .action-box {
+        padding: 30px;
+    }
+}
+
+/* Desktop (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .container {
+        max-width: 1000px;
+        padding: 25px 35px;
+    }
+    
+    .backup-restore-actions {
+        gap: 25px;
+    }
+}
+
+/* Tablet Landscape (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    .container {
+        padding: 20px 25px;
+    }
+    
+    .backup-restore-actions {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .action-box {
+        padding: 20px;
+    }
+    
+    .tab-bar {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .tab-button {
+        padding: 8px 16px;
+        font-size: 15px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 10px 12px;
+    }
+    
+    td.actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Tablet Portrait (576px - 767px) */
+@media (max-width: 767px) and (min-width: 576px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 15px 20px;
+        border-radius: 6px;
+    }
+    
+    h1, h2 {
+        font-size: 1.5rem;
+        padding-bottom: 8px;
+    }
+    
+    .backup-restore-actions {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .action-box {
+        padding: 15px;
+    }
+    
+    .action-box h3 {
+        font-size: 1.2rem;
+    }
+    
+    .tab-bar {
+        flex-direction: column;
+        border-bottom: none;
+        border-right: 2px solid #ddd;
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 0;
+        margin-right: 20px;
+    }
+    
+    .tab-button {
+        padding: 12px 16px;
+        border-bottom: none;
+        border-right: 3px solid transparent;
+        margin-bottom: 0;
+        margin-right: -2px;
+        text-align: left;
+    }
+    
+    .tab-button.active {
+        border-bottom-color: transparent;
+        border-right-color: #3498db;
+    }
+    
+    table {
+        font-size: 13px;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+        min-width: 100px;
+    }
+    
+    td.actions {
+        flex-direction: row;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+    
+    .btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .filter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .filter-form label {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+}
+
+/* Mobile Large (481px - 575px) */
+@media (max-width: 575px) and (min-width: 481px) {
+    body {
+        padding: 8px;
+    }
+    
+    .container {
+        padding: 12px 15px;
+        border-radius: 4px;
+    }
+    
+    h1, h2 {
+        font-size: 1.3rem;
+        padding-bottom: 6px;
+    }
+    
+    .backup-restore-actions {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .action-box {
+        padding: 12px;
+    }
+    
+    .action-box h3 {
+        font-size: 1.1rem;
+    }
+    
+    .action-box p {
+        font-size: 14px;
+    }
+    
+    .tab-bar {
+        flex-direction: column;
+        border-bottom: none;
+        border-right: 2px solid #ddd;
+        width: 100%;
+        max-width: 180px;
+        margin-bottom: 0;
+        margin-right: 15px;
+    }
+    
+    .tab-button {
+        padding: 10px 12px;
+        font-size: 14px;
+        border-bottom: none;
+        border-right: 3px solid transparent;
+        margin-bottom: 0;
+        margin-right: -2px;
+        text-align: left;
+    }
+    
+    .tab-button.active {
+        border-bottom-color: transparent;
+        border-right-color: #3498db;
+    }
+    
+    table {
+        font-size: 12px;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+    
+    th, td {
+        padding: 6px 8px;
+        min-width: 80px;
+    }
+    
+    td.actions {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .btn {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    
+    .filter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .filter-form label {
+        margin-right: 0;
+        margin-bottom: 3px;
+        font-size: 14px;
+    }
+    
+    .filter-form select {
+        padding: 6px;
+        font-size: 14px;
+    }
+    
+    .status-message {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+/* Mobile Small (320px - 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        padding: 10px 12px;
+        border-radius: 4px;
+    }
+    
+    h1, h2 {
+        font-size: 1.2rem;
+        padding-bottom: 5px;
+    }
+    
+    .backup-restore-actions {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .action-box {
+        padding: 10px;
+    }
+    
+    .action-box h3 {
+        font-size: 1rem;
+    }
+    
+    .action-box p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+    
+    .tab-bar {
+        flex-direction: column;
+        border-bottom: none;
+        border-right: 2px solid #ddd;
+        width: 100%;
+        max-width: 160px;
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
+    
+    .tab-button {
+        padding: 8px 10px;
+        font-size: 13px;
+        border-bottom: none;
+        border-right: 3px solid transparent;
+        margin-bottom: 0;
+        margin-right: -2px;
+        text-align: left;
+    }
+    
+    .tab-button.active {
+        border-bottom-color: transparent;
+        border-right-color: #3498db;
+    }
+    
+    table {
+        font-size: 11px;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+    
+    th, td {
+        padding: 5px 6px;
+        min-width: 70px;
+    }
+    
+    td.actions {
+        flex-direction: column;
+        gap: 3px;
+    }
+    
+    .btn {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+    
+    .filter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .filter-form label {
+        margin-right: 0;
+        margin-bottom: 2px;
+        font-size: 13px;
+    }
+    
+    .filter-form select {
+        padding: 5px;
+        font-size: 13px;
+    }
+    
+    .status-message {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        padding: 8px 12px;
+    }
+    
+    h1, h2 {
+        font-size: 1.1rem;
+        padding-bottom: 4px;
+    }
+    
+    .tab-bar {
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 2px solid #ddd;
+        width: 100%;
+        max-width: none;
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+    
+    .tab-button {
+        padding: 6px 12px;
+        font-size: 12px;
+        border-right: none;
+        border-bottom: 3px solid transparent;
+        margin-right: 0;
+        margin-bottom: -2px;
+        text-align: center;
+    }
+    
+    .tab-button.active {
+        border-right-color: transparent;
+        border-bottom-color: #3498db;
+    }
+    
+    .action-box {
+        padding: 8px;
+    }
+    
+    .backup-restore-actions {
+        gap: 8px;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .container {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        padding: 0;
+        background-color: white;
+    }
+    
+    .container {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .tab-bar, .btn, .filter-form {
+        display: none;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    th, td {
+        padding: 4px 6px;
+    }
 }

@@ -1,7 +1,12 @@
 <?php
 include "connect.php";
+require_once 'csrf.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!validate_csrf()) {
+        echo "<script>alert('Invalid security token. Please try again.'); window.location.href = 'index.php';</script>";
+        exit();
+    }
     // First, check if the reCAPTCHA response is present
     if (!isset($_POST['g-recaptcha-response']) || empty($_POST['g-recaptcha-response'])) {
         echo "<script>alert('Please complete the reCAPTCHA verification.'); window.location.href = 'index.php';</script>";

@@ -40,17 +40,18 @@
     <div class="container" id="container">
         <div class="form-container form-registration">
             <form action="register.php" method="POST">
+                <?php require_once 'csrf.php'; echo csrf_field(); ?>
                 <div class="mobile-header">
                     <h1 class="mobile-header-text">InfoHub Roxas</h1>
                     <span>Assessor's Office</span>
                 </div>
                 <h1>Create an Account</h1>
                 <span class="label-form">Username</span>
-                <input type="text" name="username" id="" placeholder="enter username" autocomplete="off" required>
+                <input type="text" name="username" id="" placeholder="Enter username" autocomplete="off" required>
                 <span class="label-form">Email</span>
-                <input type="text" name="email" id="" placeholder="enter email" autocomplete="off" required>
+                <input type="text" name="email" id="" placeholder="Enter email" autocomplete="off" required>
                 <span class="label-form">Password</span>
-                <input style="margin-bottom: 0;" type="password" name="password" id="register-password" placeholder="enter password" required>
+                <input style="margin-bottom: 0;" type="password" name="password" id="register-password" placeholder="Enter password" required>
                 <div class="show-password-container">
                     <input type="checkbox" id="toggle-register-password">
                     <label for="toggle-register-password">Show Password</label>
@@ -63,21 +64,27 @@
 
         <div class="form-container form-login">
             <form action="login.php" method="POST">
+                <?php require_once 'csrf.php'; echo csrf_field(); ?>
                 <div class="mobile-header">
+                    <img src="assets/roxas_seal.png" alt="Roxas Municipality seal" class="mobile-form-logo">
                     <h1 class="mobile-header-text">InfoHub Roxas</h1>
                     <span>Assessor's Office</span>
                 </div>
+                <img src="assets/roxas_seal.png" alt="Roxas Municipality seal" class="form-logo">
                 <h1>Login to your Account</h1>
                 <span class="label-form">Email</span>
-                <input type="text" name="email" id="" placeholder="enter email" autocomplete="off" required>
+                <input type="text" name="email" id="" placeholder="Enter email" autocomplete="off" required>
                 <span class="label-form">Password</span>
-                <input style="margin-bottom: 0;" type="password" name="password" id="login-password" placeholder="enter password" autocomplete="off" required>
+                <input style="margin-bottom: 0;" type="password" name="password" id="login-password" placeholder="Enter password" autocomplete="off" required>
                 <div class="show-password-container">
                     <input type="checkbox" id="toggle-login-password">
                     <label for="toggle-login-password">Show Password</label>
                 </div>
                 <div class="g-recaptcha" data-sitekey="6Lc8RIUrAAAAAOV0oWeMonhY3jBkXdhZhedKpDAF"></div>
                 <button type="submit">Log In</button>
+                <div style="margin-top:10px; text-align:center;">
+                    <a href="guest_login.php" style="display:inline-block; padding:10px 14px; border-radius:8px; background:#f0f0f0; color:#333; text-decoration:none; font-weight:600;">Continue as Guest</a>
+                </div>
                 <span class="mobile-toggle">Don't have an account? <a href="#" id="signUpMobile">Sign Up</a></span>
             </form>
         </div>
@@ -88,14 +95,11 @@
                     <h1 class="textr">InfoHub</h1>
                     <span class="textr">Assessor's Office</span>
                     <span class="textr">Roxas, Isabela</span>
-                    <button class="ghost" style="margin-top: 50px;" id="signIn">Sign In</button>
                 </div>
                 <div class="overlay-panel overlay-right">
                     <h1 class="textr">InfoHub</h1>
                     <span class="textr">Assessor's Office</span>
                     <span class="textr">Roxas, Isabela</span>
-                    <span class="textr" style="margin-top: 50px;">Don't have an account?</span>
-                    <button class="ghost" id="signUp">Sign Up</button>
                 </div>
             </div>
         </div>
