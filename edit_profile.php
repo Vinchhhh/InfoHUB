@@ -11,7 +11,6 @@ session_set_cookie_params([
 session_save_path($customSessionPath);
 session_start();
 include "connect.php";
-require_once 'csrf.php';
 
 if (!isset($_SESSION['user_username'])) {
     header("Location: index.php");
@@ -34,9 +33,6 @@ function render_toast_and_redirect($message, $redirectUrl) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!validate_csrf()) {
-        $message = "Invalid security token. Please try again.";
-    } else {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
 
     if ($action === 'update_username') {
@@ -114,7 +110,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             $fetch_stmt->close();
         }
-    }
     }
 }
 ?>

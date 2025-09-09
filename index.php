@@ -40,7 +40,6 @@
     <div class="container" id="container">
         <div class="form-container form-registration">
             <form action="register.php" method="POST">
-                <?php require_once 'csrf.php'; echo csrf_field(); ?>
                 <div class="mobile-header">
                     <h1 class="mobile-header-text">InfoHub Roxas</h1>
                     <span>Assessor's Office</span>
@@ -64,7 +63,6 @@
 
         <div class="form-container form-login">
             <form action="login.php" method="POST">
-                <?php require_once 'csrf.php'; echo csrf_field(); ?>
                 <div class="mobile-header">
                     <img src="assets/roxas_seal.png" alt="Roxas Municipality seal" class="mobile-form-logo">
                     <h1 class="mobile-header-text">InfoHub Roxas</h1>

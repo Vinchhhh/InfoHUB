@@ -1818,7 +1818,6 @@ if ($surveys_table_exists) {
                     <h3>Restore from Backup</h3>
                     <p>Upload a .sql file to restore the database. <strong>Warning:</strong> This will overwrite all current data in the database.</p>
                     <form action="restore.php" method="post" enctype="multipart/form-data" onsubmit="return confirm('Are you sure you want to restore the database? This will permanently overwrite all current data.');">
-                        <?php require_once 'csrf.php'; echo csrf_field(); ?>
                         <input type="file" name="backup_file" id="backup_file" accept=".sql" required>
                         <button type="submit" class="btn delete">Restore from File</button>
                     </form>
