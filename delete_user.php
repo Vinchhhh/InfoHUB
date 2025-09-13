@@ -1,0 +1,40 @@
+<?php
+ob_start();
+$customSessionPath = __DIR__ . DIRECTORY_SEPARATOR . 'sessions';
+if (!is_dir($customSessionPath)) { @mkdir($customSessionPath, 0777, true); }
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
+session_save_path($customSessionPath);
+session_start();
+require_once 'connect.php';
+
+
+if (!isset($_SESSION['user_access']) || $_SESSION['user_access'] !== 'admin') {
+    
+    $_SESSION['status'] = 'deleteerror'; 
+    header("Location: admin_panel.php");
+    exit();
+}
+
+if (isset($_GET['id'])) {
+    $user_id = $_GET['id'];
+
+    
+    $stmt = $conn->prepare("DELETE FROM users WHERE userid = ?");
+    $stmt->bind_param("i", $user_id);
+
+    if ($stmt->execute()) {
+        $_SESSION['status'] = 'deletesuccess';
+    } else {
+        $_SESSION['status'] = 'deleteerror';
+    }
+    $stmt->close();
+}
+
+$conn->close();
+header("Location: admin_panel.php");
+exit();
